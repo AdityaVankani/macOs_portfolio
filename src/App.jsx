@@ -1,4 +1,5 @@
 import Navbar from '#components/Navbar.jsx'
+import Welcome from '#components/Welcome'
 import React from 'react'
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   <main>
     <Navbar/>
-
+    <Welcome/>
   </main>
 
   )
