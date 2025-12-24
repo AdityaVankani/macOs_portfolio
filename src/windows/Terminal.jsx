@@ -19,16 +19,16 @@ function Terminal() {
             show tech stack
         </p>
         <div className='label'>
-            <p className='w-30'> Category</p>
+            <p className='w-50'> Category</p>
             <p>Technologies</p>
         </div>
         <ul className="content">
             {techStack.map(({category,items})=>(
                 <li key={category} className='flex items-center'>
                     <Check className='check' size={20}/>
-                    <h3>{category}</h3>
-                    <ul>{items.map((item,i)=>(
-                        <li key={i}> {item}{i<items.length-1 ? "," : ""}
+                    <h3 className='w-50'>{category}</h3>
+                    <ul >{items.map((item,i)=>(
+                        <li  key={i}> {item}{i<items.length-1 ? "," : ""}
                             </li>
                     ))}</ul>
                 </li>

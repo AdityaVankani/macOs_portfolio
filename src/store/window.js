@@ -46,7 +46,8 @@ const useWindowStore = create(
         const win = state.windows[windowKey];
         if (!win || !win.isOpen) return;
 
-        win.isMinimized = true;
+        win.isMaximized = false;
+        win.zIndex = state.nextZIndex++;
       }),
 
     /* ---------------- MAXIMIZE (TOGGLE) ---------------- */
@@ -54,10 +55,14 @@ const useWindowStore = create(
       set((state) => {
         const win = state.windows[windowKey];
         if (!win || !win.isOpen) return;
-        
-        
-        
-        win.zIndex = state.nextZIndex++;
+        // toggle maximize state
+        win.isMaximized = !win.isMaximized;
+        // ensure it's not minimized when maximized
+        win.isMinimized = false;
+        // bring to front when maximizing
+        if (win.isMaximized) {
+          win.zIndex = state.nextZIndex++;
+        }
       }),
   }))
 );

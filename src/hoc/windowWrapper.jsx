@@ -7,7 +7,7 @@ import React, { useLayoutEffect, useRef } from 'react'
 const WindowWrapper =( Component,windowKey)=> {
     const wrapped=(props)=>{
         const {focusWindow,windows} =useWindowStore();
-        const {isOpen,zIndex} =windows[windowKey];
+        const {isOpen,zIndex,isMaximized} =windows[windowKey];
         const ref= useRef(null);
 
         useGSAP(()=>{
@@ -27,13 +27,14 @@ const WindowWrapper =( Component,windowKey)=> {
         useGSAP(()=>{
             const el=ref.current;
             if(!el) return;
+            // don't allow dragging when maximized
+            if (isMaximized) return;
             const [instance] = Draggable.create(el,{
-                onPress:()=> focusWindow 
-                (windowKey)
+                onPress:()=> focusWindow(windowKey)
             });
 
-            return ()=> instance.kill(); 
-        },[])
+            return ()=> instance?.kill(); 
+        },[isMaximized])
         useLayoutEffect(()=>{
             const el=ref.current;
             if(!el) return ;
@@ -42,7 +43,15 @@ const WindowWrapper =( Component,windowKey)=> {
         },[isOpen])
         
 
-        return <section id={windowKey} ref ={ref} style={{zIndex}}
+        const style = { zIndex };
+        if (isMaximized) {
+            style.top = 0;
+            style.left = 0;
+            style.width = '100dvw';
+            style.height = '100dvh';
+        }
+
+        return <section id={windowKey} ref ={ref} style={style}
         className='absolute'>
             <Component {...props} />
 

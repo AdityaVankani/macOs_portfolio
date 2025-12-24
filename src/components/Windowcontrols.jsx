@@ -18,7 +18,7 @@ const WindowControls = ({ target }) => {
       {/* Minimize (Yellow) */}
       <div
         className="minimize"
-        onClick={() => closeWindow(target)}
+        onClick={() => minimizeWindow(target)}
       />
 
       {/* Maximize (Green) */}

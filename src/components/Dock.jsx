@@ -63,7 +63,7 @@ useGSAP(()=>{
         else{
             openWindow(app.id);
         }
-        console.log(windows);
+        
      };
     return  <section id="dock">
         <div ref={dockRef} className='dock-container'>
