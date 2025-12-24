@@ -408,7 +408,7 @@ body {
 
 
 #profile {
-  @apply absolute h-fit w-3xl left-52 top-24 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl bg-white flex flex-col;
+  @apply absolute h-120 w-3xl left-52 top-24 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl bg-white flex flex-col;
 
   #window-header {
     h2 {
