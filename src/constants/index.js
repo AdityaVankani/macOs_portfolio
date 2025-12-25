@@ -326,6 +326,15 @@ const internships = [
         href: "https://bidding-system-brown.vercel.app/",
         
       },
+      {
+          id: 5,
+          name: "Bidding System.png",
+          icon: "/images/image.png",
+          kind: "file",
+          fileType: "img",
+          position: "top-52 right-80",
+          imageUrl: "/images/bidding system.png",
+        },
     ],
 
   },
